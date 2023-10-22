@@ -1,5 +1,6 @@
 import { css, styled } from "styled-components"
 import { IoClose } from "react-icons/io5"
+<<<<<<< HEAD
 
 export function MenuMobile({ onClose  }) {
   
@@ -22,6 +23,24 @@ export function MenuMobile({ onClose  }) {
         
       </div>
     </div>
+=======
+import { useEffect } from "react";
+
+export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
+  useEffect(() => {
+    document.body.style.overflowY = menuIsVisible ? 'hidden' : 'auto';
+  }, [menuIsVisible]);
+
+  return (
+    <Container isVisible={menuIsVisible}>
+      <IoClose size={40} onClick={() => setMenuIsVisible(false)} />
+      <nav>
+        <a href="index.html">Página Inicial</a>
+        <a href="resgate.html">Resgate</a>
+        <a href="sobre.html">Sobre nós</a>
+        <a href="#">Contato</a>
+      </nav>
+>>>>>>> 3675b053a9406fe7a053409751d33099c6c9221f
     </Container>
 
   )
@@ -58,7 +77,11 @@ transform: translateY(50px);
     transition: .7s;
   }
 
+<<<<<<< HEAD
   > nav{
+=======
+  nav{
+>>>>>>> 3675b053a9406fe7a053409751d33099c6c9221f
     display: flex;
     align-items: center;
     justify-content: center;

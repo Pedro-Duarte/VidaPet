@@ -13,7 +13,11 @@ export function IndexResgate() {
                     <p>
                         Perder um animal de estimação é angustiante, mas não precisa ser permanente. Nossa plataforma conecta a comunidade de amantes de pets, permitindo que você divulgue e localize animais perdidos na sua região. Juntos, podemos ajudar nossos amigos peludos a voltar para casa em segurança.
                     </p>
+<<<<<<< HEAD
                     <a href="/resgate">Saiba Mais</a>
+=======
+                    <a href="resgate.html">Saiba Mais</a>
+>>>>>>> 3675b053a9406fe7a053409751d33099c6c9221f
                 </div>
             </section>
 
