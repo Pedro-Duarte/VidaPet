@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 
 function App() {
-  
+
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
   const openOverlay = () => {
@@ -30,17 +30,17 @@ function App() {
             <p>Isso não apenas ajuda a localizar rapidamente o animal, mas também cria oportunidades para resgatadores e pessoas interessadas em adotar fazerem a diferença na vida desses animais de estimação.</p>
             <h2> Junte-se a nós nesta missão de cuidar e encontrar um lar para os peludos necessitados! 🐶🏡🐱</h2>
             <div>
-            <button onClick={openOverlay}>Abrir Componente Sobreposto</button>
+              <button onClick={openOverlay}>Abrir Componente Sobreposto</button>
 
-      {isOverlayVisible && (
-        <OverlayComponent onClose={closeOverlay} />
-      )}
-      </div>
+              {isOverlayVisible && (
+                <OverlayComponent onClose={closeOverlay} />
+              )}
+            </div>
           </div>
         </section>
 
       </Container>
-      
+
     </>
   )
 

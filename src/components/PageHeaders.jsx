@@ -2,17 +2,12 @@
 import { styled } from "styled-components";
 import { AiOutlineLogin } from "react-icons/ai";
 import { RiMenu3Fill } from 'react-icons/ri';
-<<<<<<< HEAD
 import logo from '../imagens/logo-vidaPet.png';
 
-=======
-import logoImg from '../../public/imagens/logo-vidaPet.png';
->>>>>>> 3675b053a9406fe7a053409751d33099c6c9221f
 
 export function PageHeaders({ setMenuIsVisible }) {
   return (
     <Container>
-<<<<<<< HEAD
       <Logo>
       <img src={logo} alt="Vida Pet" />
       </Logo>
@@ -27,19 +22,6 @@ export function PageHeaders({ setMenuIsVisible }) {
               <span>Sobre Nós</span>
             </a>                       
           </NavMenu>
-=======
-      <section>
-        <Logo>
-        <a href="index.html">
-        <img src={logoImg} alt="Logo" /></a> </Logo>
-        <nav>
-          <a href="index.html">Página Inicial</a>
-          <a href="resgate.html">Resgate</a>
-          <a href="sobre.html">Sobre nós</a>
-          <a href="#">Contato</a>
-        </nav>
-      </section>
->>>>>>> 3675b053a9406fe7a053409751d33099c6c9221f
 
       <section>
         <a><AiOutlineLogin size={30} /> Login </a>
@@ -49,12 +31,7 @@ export function PageHeaders({ setMenuIsVisible }) {
   )
 }
 
-<<<<<<< HEAD
-// Resto do código do componente PageHeaders
 
-
-=======
->>>>>>> 3675b053a9406fe7a053409751d33099c6c9221f
 const Logo = styled.a`
   padding: 0;
   width: 160px;
@@ -69,7 +46,6 @@ const Logo = styled.a`
   }
 `;
 
-<<<<<<< HEAD
 const NavMenu = styled.div`
   align-items: center;
   display: flex;
@@ -135,8 +111,6 @@ const NavMenu = styled.div`
   } */
 `;
 
-=======
->>>>>>> 3675b053a9406fe7a053409751d33099c6c9221f
 const Container = styled.header`
   width: 100%;
   background: #d7d350;
