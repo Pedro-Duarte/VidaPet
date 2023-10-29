@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 
 function App() {
-  
+
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
   const openOverlay = () => {
@@ -30,17 +30,16 @@ function App() {
             <p>Isso não apenas ajuda a localizar rapidamente o animal, mas também cria oportunidades para resgatadores e pessoas interessadas em adotar fazerem a diferença na vida desses animais de estimação.</p>
             <h2> Junte-se a nós nesta missão de cuidar e encontrar um lar para os peludos necessitados! 🐶🏡🐱</h2>
             <div>
-            <button onClick={openOverlay}>Abrir Componente Sobreposto</button>
+              <button onClick={openOverlay}>Abrir Componente Sobreposto</button>
 
-      {isOverlayVisible && (
-        <OverlayComponent onClose={closeOverlay} />
-      )}
-      </div>
+              {isOverlayVisible && (
+                <OverlayComponent onClose={closeOverlay} />
+              )}
+            </div>
           </div>
         </section>
-
       </Container>
-      
+
     </>
   )
 
@@ -118,35 +117,31 @@ display: flex;
               color: rgb(255, 255, 255);
             }
 
-      . button{
-            margin: 2rem 0rem;
-  border-radius: 8px;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 1px solid rgb(127, 40, 181);
-  background: rgb(127, 40, 181);
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.1) 0px 5px 6px;
+      .button{
+          margin: 2rem 0rem;
+          border-radius: 8px;
+          padding: 0.6rem 1.5rem;
+          font-size: 1rem;
+          font-weight: bold;
+          border: 1px solid rgb(127, 40, 181);
+          background: rgb(127, 40, 181);
+          color: rgb(255, 255, 255);
+          text-decoration: none;
+          text-align: center;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.1) 0px 5px 6px;
 
-  @media only screen and (min-width: 768px) {
-    
-    margin: 2rem 30rem;
-  } 
-           }
+          @media only screen and (min-width: 768px) {
+            
+            margin: 2rem 30rem;
+          } 
+       }
 
            h2{
             text-align: center;
-              line-height: 30px;
-              margin: 0.6em 0px;
-              color: rgb(255, 255, 255);
+            line-height: 30px;
+            margin: 0.6em 0px;
+            color: rgb(255, 255, 255);
            }
-    }
-    
-    
-  
-`
+}`
 
 export default App

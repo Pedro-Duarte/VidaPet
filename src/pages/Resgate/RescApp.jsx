@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/App.css'
+import '../../styles/App.css';
 import GoogleMaps from '../../components/GoogleMaps';
 import Webcam from 'react-webcam';
 
