@@ -1,31 +1,34 @@
 
+import React, { useState } from 'react';
 import { styled } from "styled-components";
 import { AiOutlineLogin } from "react-icons/ai";
 import { RiMenu3Fill } from 'react-icons/ri';
 import logo from '../imagens/logo-vidaPet.png';
 
+const PageHeaders = () => {
 
-export function PageHeaders({ setMenuIsVisible }) {
+  const [mobileMenu, setMobileMenu] = React.useState(false);
+
   return (
     <Container>
       <Logo>
-      <img src={logo} alt="Vida Pet" />
+        <img src={logo} alt="Vida Pet" />
       </Logo>
       <NavMenu>
-      <a href="/home">
-               <span>Página Inicial</span>
-            </a>
-            <a href="/resgate">
-               <span>Resgate</span>
-            </a>
-            <a href="/sobrenos">
-              <span>Sobre Nós</span>
-            </a>                       
-          </NavMenu>
-
+        <a href="/home">
+          <span>Página Inicial</span>
+        </a>
+        <a href="/resgate">
+          <span>Resgate</span>
+        </a>
+        <a href="/sobrenos">
+          <span>Sobre Nós</span>
+        </a>                       
+      </NavMenu>
       <section>
-        <a><AiOutlineLogin size={30} /> Login </a>
-        <RiMenu3Fill size={30} onClick={() => setMenuIsVisible(true)} className="mobile" />
+        <a><AiOutlineLogin size={40}/></a>
+        <button className='mobileButton' onClick={() => setMobileMenu(!mobileMenu)}>
+        </button>
       </section>
     </Container>
   )
@@ -51,7 +54,7 @@ const NavMenu = styled.div`
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 0px;
   padding: 0px;
   position: relative;
@@ -72,7 +75,8 @@ const NavMenu = styled.div`
 
     span {
       color: rgb(249, 249, 249);
-      font-size: 13px;
+      font-size: 16px;
+      font-weight: 700;
       letter-spacing: 1.42px;
       line-height: 1.08;
       padding: 2px 0px;
@@ -106,20 +110,20 @@ const NavMenu = styled.div`
     }
   }
 
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
-  } */
+  }
 `;
 
 const Container = styled.header`
   width: 100%;
   background: #d7d350;
   overflow-x: hidden;
-  padding: 14.5px 64px;
+  padding: 1rem 64px 1rem 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0px;
+  margin: 0px; 
   position: relative;
 
    
@@ -139,8 +143,8 @@ const Container = styled.header`
 
       a {
         display: flex;
-    align-items: center;
-    padding: 0 12px;
+        align-items: center;
+        padding: 0 12px;
 
         &:before {
           content: '';
@@ -161,21 +165,46 @@ const Container = styled.header`
       }
     }
    
-    .mobile {
-      display: none;
+    .mobileButton {
+      background: #d7d350;
+      border-radius: 0.2rem;
+      height: 40px;
+      width: 40px;
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      transition: 0.1s;
+      cursor: pointer;
     }
 
-    @media(max-width: 900px) {
-      .mobile {
-        display: initial;
-      }
-      > nav {
+    .mobileButton::after {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 2px;
+      border-radius: 2px;
+      background: #fff;
+      box-shadow: 0 12px #fff, 0 -12px #fff;
+    }
+
+    .mobileButton:focus, 
+    .mobileButton:hover {
+      outline: none;
+      background-color: #d7d350;
+      box-shadow: 0 0 0 3px #fff;
+      border-color: #fff;
+    }
+
+    @media(min-width: 768px) {
+      .mobileButton {
         display: none;
       }
     }
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 768px) {
     padding: 14.5px 16px;
   }
 `;

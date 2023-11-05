@@ -15,7 +15,7 @@ export function MenuMobile({ onClose  }) {
             <a href="/resgate">
                <span>Resgate</span>
             </a>
-            <a>
+            <a href="/SobreNos">
               <span>Sobre Nós</span>
             </a>
       </nav>
