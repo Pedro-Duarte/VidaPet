@@ -43,12 +43,10 @@ const Container = styled.section`
   justify-content: center;
   background: rgb(246,255,56);
   background: linear-gradient(48deg, rgba(246,255,56,0.9177870977492559) 0%, rgba(234,152,66,0.7105041845839899) 75%);
-  
-
-opacity:0;
-pointer-events: nome;
-transition: .5s;
-transform: translateY(50px);
+  opacity:0;
+  pointer-events: nome;
+  transition: .5s;
+  transform: translateY(50px);
 
   > svg {
     position: absolute;
@@ -83,7 +81,7 @@ transform: translateY(0px);
 > svg {
   transform: rotate(0deg);}
 
-nav{transform: scale(1);}
+  nav{transform: scale(1);}
 
 
 `}

@@ -2,12 +2,11 @@
 import React, { useState } from 'react';
 import { styled } from "styled-components";
 import { AiOutlineLogin } from "react-icons/ai";
-import { RiMenu3Fill } from 'react-icons/ri';
 import logo from '../imagens/logo-vidaPet.png';
 
 const PageHeaders = () => {
 
-  const [mobileMenu, setMobileMenu] = React.useState(false);
+  const [MenuMobile, setMenuMobile] = useState(false);
 
   return (
     <Container>
@@ -26,8 +25,8 @@ const PageHeaders = () => {
         </a>                       
       </NavMenu>
       <section>
-        <a><AiOutlineLogin size={40}/></a>
-        <button className='mobileButton' onClick={() => setMobileMenu(!mobileMenu)}>
+        <a href='Home'><AiOutlineLogin size={40}/></a>
+        <button className={`mobileButton MenuMobile` `&&` `monileButtonActive`} onClick={() => setMenuMobile(!MenuMobile)}>
         </button>
       </section>
     </Container>
