@@ -5,6 +5,7 @@ import PageHeader from './components/PageHeaders';
 import PageFooter from './components/PageFooter';
 import Home from "./pages/Home/index";
 import Resgate from "./pages/Resgate/resgate";
+import SobreNos from './pages/SobreNos/IndexSobreNos';
 
 function App() {
   
@@ -13,9 +14,10 @@ function App() {
       <Router>
         <PageHeader/>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/resgate" element={<Resgate />} />
+          <Route path="/SobreNos" element={<SobreNos />} />
 
         </Routes>
       </Router>
