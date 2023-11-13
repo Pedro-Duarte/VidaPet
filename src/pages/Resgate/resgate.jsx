@@ -1,19 +1,19 @@
 import "../../styles/style.css";
 import { styled } from 'styled-components';
-import OverlayComponent from './OverlayComponent';
+import WebcamCapture from './OverlayComponent';
 import React, { useState } from 'react';
 
 
 function App() {
 
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const [isWebcamVisible, setIsWebcamVisible] = useState(false);
 
-  const openOverlay = () => {
-    setIsOverlayVisible(true);
+  const openWebcam = () => {
+    setIsWebcamVisible(true);
   };
 
-  const closeOverlay = () => {
-    setIsOverlayVisible(false);
+  const closeWebcam = () => {
+    setIsWebcamVisible(false);
   };
 
   return (
@@ -30,15 +30,24 @@ function App() {
             <p>Isso não apenas ajuda a localizar rapidamente o animal, mas também cria oportunidades para resgatadores e pessoas interessadas em adotar fazerem a diferença na vida desses animais de estimação.</p>
             <h2> Junte-se a nós nesta missão de cuidar e encontrar um lar para os peludos necessitados! 🐶🏡🐱</h2>
             <div>
-              <button onClick={openOverlay}>Abrir Componente Sobreposto</button>
+              <button onClick={openWebcam}>Abrir Componente Sobreposto</button>
 
-              {isOverlayVisible && (
-                <OverlayComponent onClose={closeOverlay} />
-              )}
             </div>
           </div>
         </section>
+
       </Container>
+      {isWebcamVisible && (
+        <div className="webcam-overlay">
+          <WebcamCapture onClose={closeWebcam}
+            videoConstraints={{
+              width: window.innerWidth,
+              height: window.innerHeight,
+            }}
+          />
+        </div>
+      )}
+
 
     </>
   )

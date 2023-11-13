@@ -1,17 +1,17 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { styled } from "styled-components";
-import { AiOutlineLogin } from "react-icons/ai";
+import { RiMenu3Fill } from 'react-icons/ri';
 import logo from '../imagens/logo-vidaPet.png';
 
-const PageHeaders = () => {
-
-  const [MenuMobile, setMenuMobile] = useState(false);
+const PageHeaders = ({ setMenuIsVisible }) => {
 
   return (
     <Container>
       <Logo>
-        <img src={logo} alt="Vida Pet" />
+        <a href="/home">
+          <img src={logo} alt="Vida Pet" />
+        </a>
       </Logo>
       <NavMenu>
         <a href="/home">
@@ -22,12 +22,10 @@ const PageHeaders = () => {
         </a>
         <a href="/sobrenos">
           <span>Sobre Nós</span>
-        </a>                       
+        </a>
       </NavMenu>
       <section>
-        <a href='Home'><AiOutlineLogin size={40}/></a>
-        <button className={`mobileButton MenuMobile` `&&` `monileButtonActive`} onClick={() => setMenuMobile(!MenuMobile)}>
-        </button>
+        <RiMenu3Fill size={35} onClick={() => setMenuIsVisible(true)} className="mobile" />
       </section>
     </Container>
   )
@@ -114,98 +112,75 @@ const NavMenu = styled.div`
   }
 `;
 
+
 const Container = styled.header`
-  width: 100%;
-  background: #d7d350;
-  overflow-x: hidden;
-  padding: 1rem 64px 1rem 64px;
+width: 100%;
+background: rgb(215, 211, 80);
+color: white;
+padding: 14.5px 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+> section {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0px; 
-  position: relative;
+  gap: 2rem;
 
-   
+  &:last-child {
+    gap: 1rem;
+  }
 
-  > section {
+  > img {
+    width: 230px;
+
+    @media(max-width: 500px) {
+      width: 120px;
+    }
+  }
+
+  > nav {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
 
-    &:last-child {
-      gap: 1rem;
-    }
+    a {
+      font-size: 20px;
+      position: relative;
 
-    > nav {
-      display: flex;
-      gap: 1rem;
-    
+      &:before {
+        content: '';
+        border-radius: 50px;
+        bottom: 0px;
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: #3CA63A;
+        transition: .3s;
+      }
 
-      a {
-        display: flex;
-        align-items: center;
-        padding: 0 12px;
-
+      &:hover {
         &:before {
-          content: '';
-          border-radius: 10px;
-          bottom: 0px;
-          position: absolute;
-          width: 0%;
-          height: 2px;
-          background: white;
-          transition: .3s;
-        }
-
-        &:hover {
-          &:before {
-            width: 100%;
-          }
+          width: 100%;
         }
       }
     }
-   
-    .mobileButton {
-      background: #d7d350;
-      border-radius: 0.2rem;
-      height: 40px;
-      width: 40px;
-      padding: 0px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid transparent;
-      transition: 0.1s;
-      cursor: pointer;
-    }
-
-    .mobileButton::after {
-      content: '';
-      display: block;
-      width: 2rem;
-      height: 2px;
-      border-radius: 2px;
-      background: #fff;
-      box-shadow: 0 12px #fff, 0 -12px #fff;
-    }
-
-    .mobileButton:focus, 
-    .mobileButton:hover {
-      outline: none;
-      background-color: #d7d350;
-      box-shadow: 0 0 0 3px #fff;
-      border-color: #fff;
-    }
-
-    @media(min-width: 768px) {
-      .mobileButton {
-        display: none;
-      }
-    }
+  }
+  .mobile {
+    display: none;
   }
 
-  @media(max-width: 768px) {
-    padding: 14.5px 16px;
+  @media(max-width: 900px) {
+    .mobile {
+      display: initial;
+    }
+    > nav {
+      display: none;
+    }
   }
+}
+
+@media(max-width: 700px) {
+  padding: 14.5px 16px;
+}
 `;
 
 export default PageHeaders;

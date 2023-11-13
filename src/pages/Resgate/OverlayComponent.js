@@ -10,7 +10,6 @@ function OverlayComponent({ onClose }) {
   const [dateTime, setDateTime] = useState(null);
   const [comments, setComments] = useState('');
   const [showMap, setShowMap] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [frontCamera, setFrontCamera] = useState(false);
   const webcamRef = useRef(null);
 
@@ -94,28 +93,13 @@ function OverlayComponent({ onClose }) {
       });
   };
 
-  const toggleDarkMode = () => {
-    if (darkMode) {
-      document.body.classList.remove('dark-mode');
-    } else {
-      document.body.classList.add('dark-mode');
-    }
-    setDarkMode(!darkMode);
-  };
+  
 
   return (
     <div className="overlay">
       <div className="content">
 
-        <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
-          <div className="App-header">
-            <h1>Animal Rescue App</h1>
-            <button className="dark-mode-button" onClick={toggleDarkMode}>
-              {darkMode ? 'Modo Claro' : 'Modo Escuro'}
-            </button>
-          </div>
-
-          <div className="main-container">
+        <div className="main-container">
             <div className="webcam-container">
               <Webcam
                 audio={false}
@@ -195,7 +179,6 @@ function OverlayComponent({ onClose }) {
         <button onClick={onClose}>Fechar</button>
 
       </div>
-    </div>
   );
 }
 
