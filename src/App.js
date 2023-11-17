@@ -12,10 +12,14 @@ import { MenuMobile } from "./components/MenuMobile";
 function App() {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
 
+  const handleClick = (evento) => {
+    evento.preventDefault();
+  }
+
   return (
     <div className="App">
       <Router>
-        <PageHeader setMenuIsVisible={setMenuIsVisible} />
+        <PageHeader onClick={handleClick} setMenuIsVisible={setMenuIsVisible} />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
