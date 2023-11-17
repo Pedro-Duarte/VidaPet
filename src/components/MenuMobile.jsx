@@ -21,6 +21,9 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
         <a href="/SobreNos">
           <span>Sobre Nós</span>
         </a>
+        <a href="/Contato">
+          <span>Contato</span>
+        </a>
       </nav>
 
     </Container>

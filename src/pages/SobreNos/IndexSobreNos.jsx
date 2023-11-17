@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { styled } from 'styled-components';
-import '../../styles/style.css';
+import '../../styles/style.css'
 import PetImagem from '../../imagens/pet1.png'
 import PetImagem2 from '../../imagens/pet-img.png'
 
@@ -22,8 +22,8 @@ function SobreNos() {
               <div className='Cuidando_Div'>
                   <h1 className='Cuidando_H1'>Cuidando dos Pets</h1>
                   <p className='Cuidando_Texto'>
-                      Nossa missao é criar um Ecossistem onde voce pode fazer toda a gestao do seu Pet e 
-                      ajudar outros abandonados ou perdidos.
+                      Nossa missão é criar um Ecossistema onde você pode fazer toda a gestão do seu Pet e 
+                      ajudar a outros abandonados ou perdidos.
                   </p>
               </div>
             </section>
@@ -32,16 +32,6 @@ function SobreNos() {
 }
 
 const Container = styled.section`
-background-color: black;
-display: flex;
-flex-direction: column;
--moz-box-pack: center;
-justify-content: center;
--moz-box-align: center;
-align-items: center;
-min-width: 100%;
-width: 100%;
-height: 100%;
 
 @media only screen and (min-width: 768px) {   
   background-color: rgba(0, 0, 0, 0);
@@ -87,45 +77,43 @@ height: 100%;
       } 
       
       h1{
-            margin: 0.6em 0px;
-            color: white;
-            text-align: center;
-            font-size: 35px;
+        margin: 0.6em 0px;
+        color: white;
+        text-align: center;
+        font-size: 35px;
 
-            @media only screen and (min-width: 768px) {     
-            font-size: 30px;
-            }                        
-          }
+        @media only screen and (min-width: 768px) {     
+        font-size: 30px;
+        }                        
+      }
 
-         p.Sobre_Texto{
-            line-height: 28px;
-            margin: 0.6em 0px;
-            color: white;
-            text-decoration: justify;
-            font-size: 20px;
+      p.Sobre_Texto{
+        line-height: 28px;
+        margin: 0.6em 0px;
+        color: white;
+        text-decoration: justify;
+        font-size: 20px;
 
-            @media only screen and (min-width: 768px) {
-            font-size: 16px;
-            line-height: 24px;
-            }
-          }
+        @media only screen and (min-width: 768px) {
+        font-size: 16px;
+        line-height: 24px;
+        }
+      }
     }
 
-    img.Sobre_Imagem {
-      flex-grow: 1;
+  img.Sobre_Imagem {
+    flex-grow: 1;
+    max-width: 235px;
+    height: auto;
+    margin: 0px;
+    
+    @media only screen and (min-width: 768px) {
       max-width: 235px;
       height: auto;
-      margin: 0px;
-      
-      @media only screen and (min-width: 768px) {
-        max-width: 235px;
-        height: auto;
-        /* max-width: 100%;
-        max-height: 100%; */
-        margin:0px 0px 0px 3rem;
+      margin:0px 0px 0px 3rem;
 
-      }
-    }        
+    }
+  }        
 }
 
 >section.Cuidando_Section {
@@ -152,10 +140,6 @@ height: 100%;
       margin: 0px;
       
       @media only screen and (min-width: 768px) {
-        /* width: 510px;
-        height: 454.8px;
-        max-width: 100%;
-        max-height: 100%; */
         margin:0px 3rem 0px 0px;
       }
     }
@@ -176,7 +160,6 @@ height: 100%;
         width: 100%;
         margin: 1rem 1rem 0px;
       }                
-    }
 
       h1.Cuidando_H1 {
         margin: 0.6em 0px;
@@ -189,18 +172,19 @@ height: 100%;
         }                        
       }
 
-        p.Cuidando_Texto{
-          line-height: 28px;
-          margin: 0.6em 0px;
-          color: black;
-          text-align:justify;
-          font-size: 20px;
+      p.Cuidando_Texto{
+        line-height: 28px;
+        margin: 0.6em 0px;
+        color: black;
+        text-align:justify;
+        font-size: 20px;
 
-          @media only screen and (min-width: 768px) {
-            font-size: 16px;
-            line-height: 24px;
-          }
+        @media only screen and (min-width: 768px) {
+          font-size: 16px;
+          line-height: 24px;
         }
+      }
+    }
 }
 `
 export default SobreNos;

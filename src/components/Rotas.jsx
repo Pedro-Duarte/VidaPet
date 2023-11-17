@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PaginaInicial from "../App";
 import Resgate from '../resgate-1';
 import SobreNos from '../pages/SobreNos/IndexSobreNos';
+import Contato from '../pages/Contact/indexContato';
 
 function Rotas() {
   return (
@@ -12,6 +13,8 @@ function Rotas() {
         <Route path="/home" component={PaginaInicial} />
         <Route path="/resgate" component={Resgate} />
         <Route path="/sobrenos" component={SobreNos} />
+        <Route path="/contato" component={Contato} />
+
         {/* Adicione mais rotas para outras páginas. */}
       </Routes>
     </Router>

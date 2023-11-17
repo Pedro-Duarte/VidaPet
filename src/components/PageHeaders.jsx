@@ -6,6 +6,10 @@ import logo from '../imagens/logo-vidaPet.png';
 
 const PageHeaders = ({ setMenuIsVisible }) => {
 
+  const handleClick = (evento) => {
+    evento.preventDefault();
+  }
+
   return (
     <Container>
       <Logo>
@@ -22,6 +26,9 @@ const PageHeaders = ({ setMenuIsVisible }) => {
         </a>
         <a href="/sobrenos">
           <span>Sobre Nós</span>
+        </a>
+        <a href="/contato">
+          <span>Contato</span>
         </a>
       </NavMenu>
       <section>
@@ -168,17 +175,14 @@ justify-content: space-between;
     display: none;
   }
 
-  @media(max-width: 900px) {
+  @media(max-width: 768px) {
     .mobile {
       display: initial;
-    }
-    > nav {
-      display: none;
     }
   }
 }
 
-@media(max-width: 700px) {
+@media(max-width: 768px) {
   padding: 14.5px 16px;
 }
 `;
