@@ -2,9 +2,7 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import foto from "../imagens/banner.jpg"
-
-
+import foto from "../imagens/banner.jpg";
 
 
 const ImgSlider = (props) => {

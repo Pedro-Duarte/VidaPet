@@ -1,7 +1,7 @@
 
 import { React } from 'react';
 import { styled } from 'styled-components';
-import '../../styles/style.css'
+import '../../styles/style.css';
 import ImgSlider from '../../components/ImgSlider';
 import IndexResgate from '../../components/IndexResgate';
 
@@ -15,7 +15,6 @@ function Index() {
        <ImgSlider />
         <h2>HOME</h2>
       </Container>
-      
     </>
   )
 

@@ -1,37 +1,35 @@
 
-import styled from "styled-components";
-import { AiOutlineLogin } from "react-icons/ai";
+import React from 'react';
+import { styled } from "styled-components";
 import { RiMenu3Fill } from 'react-icons/ri';
-import logoImg from '../logo-vidaPet.png';
+import logo from '../imagens/logo-vidaPet.png';
 
-export function PageHeaders({ setMenuIsVisible }) {
+const PageHeaders = ({ setMenuIsVisible }) => {
+
   return (
     <Container>
       <Logo>
-      <img src={logoImg} alt="Vida Pet" />
+        <a href="/home">
+          <img src={logo} alt="Vida Pet" />
+        </a>
       </Logo>
       <NavMenu>
-      <a href="/home">
-               <span>Página Inicial</span>
-            </a>
-            <a href="/resgate">
-               <span>Resgate</span>
-            </a>
-            <a>
-              <span>Sobre Nós</span>
-            </a>                       
-          </NavMenu>
-      
-
+        <a href="/home">
+          <span>Página Inicial</span>
+        </a>
+        <a href="/resgate">
+          <span>Resgate</span>
+        </a>
+        <a href="/sobrenos">
+          <span>Sobre Nós</span>
+        </a>
+      </NavMenu>
       <section>
-        <a><AiOutlineLogin size={30} /> Login </a>
-        <RiMenu3Fill size={30} onClick={() => setMenuIsVisible(true)} className="mobile" />
+        <RiMenu3Fill size={35} onClick={() => setMenuIsVisible(true)} className="mobile" />
       </section>
     </Container>
   )
 }
-
-// Resto do código do componente PageHeaders
 
 
 const Logo = styled.a`
@@ -53,7 +51,11 @@ const NavMenu = styled.div`
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
+<<<<<<< HEAD
   justify-content: flex-end;
+=======
+  justify-content: center;
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
   margin: 0px;
   padding: 0px;
   position: relative;
@@ -74,7 +76,8 @@ const NavMenu = styled.div`
 
     span {
       color: rgb(249, 249, 249);
-      font-size: 13px;
+      font-size: 16px;
+      font-weight: 700;
       letter-spacing: 1.42px;
       line-height: 1.08;
       padding: 2px 0px;
@@ -108,78 +111,80 @@ const NavMenu = styled.div`
     }
   }
 
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
-  } */
+  }
 `;
 
+
 const Container = styled.header`
-  width: 100%;
-  background: #d7d350;
-  overflow-x: hidden;
-  padding: 14.5px 64px;
+width: 100%;
+background: rgb(215, 211, 80);
+color: white;
+padding: 14.5px 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+> section {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0px;
-  position: relative;
+  gap: 2rem;
 
-   
+  &:last-child {
+    gap: 1rem;
+  }
 
-  > section {
-    display: flex;
-    gap: 2rem;
+  > img {
+    width: 230px;
 
-    &:last-child {
-      gap: 1rem;
+    @media(max-width: 500px) {
+      width: 120px;
     }
+  }
 
-    > nav {
-      display: flex;
-      gap: 1rem;
-    
+  > nav {
+    display: flex;
+    gap: 1rem;
 
-      a {
-        display: flex;
-    align-items: center;
-    padding: 0 12px;
+    a {
+      font-size: 20px;
+      position: relative;
 
+      &:before {
+        content: '';
+        border-radius: 50px;
+        bottom: 0px;
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: #3CA63A;
+        transition: .3s;
+      }
+
+      &:hover {
         &:before {
-          content: '';
-          border-radius: 10px;
-          bottom: 0px;
-          position: absolute;
-          width: 0%;
-          height: 2px;
-          background: white;
-          transition: .3s;
-        }
-
-        &:hover {
-          &:before {
-            width: 100%;
-          }
+          width: 100%;
         }
       }
     }
-   
+  }
+  .mobile {
+    display: none;
+  }
+
+  @media(max-width: 900px) {
     .mobile {
+      display: initial;
+    }
+    > nav {
       display: none;
     }
-
-    @media(max-width: 900px) {
-      .mobile {
-        display: initial;
-      }
-      > nav {
-        display: none;
-      }
-    }
   }
+}
 
-  @media(max-width: 700px) {
-    padding: 14.5px 16px;
-  }
+@media(max-width: 700px) {
+  padding: 14.5px 16px;
+}
 `;
 
 export default PageHeaders;
