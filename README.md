@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Bem-vindo ao Projeto Vida Pet! 🐾
 
 👋 Sobre o Projeto:
@@ -28,3 +29,6 @@ Nós trabalhamos com uma variedade de tecnologias, incluindo, mas não limitado 
 
 
 🎉 Estamos empolgados para ver o que você pode fazer para tornar a vida dos animais de estimação mais feliz e saudável. Se você tiver alguma dúvida, não hesite em perguntar. Vamos trabalhar juntos para criar um mundo melhor para nossos amigos peludos! 🐶🐱
+=======
+# VidaPet
+>>>>>>> 006a0095edc5c8ce0e334368ccb0dce524b2084b
