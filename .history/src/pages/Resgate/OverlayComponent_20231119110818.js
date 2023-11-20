@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from 'react';
+=======
+import { useState, useEffect, useRef } from 'react';
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
 import '../../styles/App.css';
 import GoogleMaps from '../../components/GoogleMaps';
 import Webcam from 'react-webcam';
@@ -53,7 +57,7 @@ function RescApp() {
 
   const sendFormData = async (formData) => {
     try {
-      const response = await fetch('https://18.228.95.233/upload.php', {
+      const response = await fetch('https://18.230.58.0/upload.php', {
         method: 'POST',
         body: formData,
         mode: 'cors',
@@ -86,9 +90,12 @@ function RescApp() {
       formData.append('comments', comments);
 
       sendFormData(formData);
+<<<<<<< HEAD
     } else {
       console.error('Dados faltando para enviar.');
       alert('Dados faltando para enviar. Por favor, capture a imagem, verifique a geolocalização e a data/hora, e tente novamente.');
+=======
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
     }
   };
 
@@ -113,6 +120,7 @@ function RescApp() {
     }
   };
 
+<<<<<<< HEAD
   const toggleDarkMode = () => {
     document.body.classList.toggle('dark-mode');
     setDarkMode(!darkMode);
@@ -206,3 +214,110 @@ function RescApp() {
 }
 
 export default RescApp;
+=======
+  const sendFormData = (formData) => {
+    fetch('18.230.58.0:8080/upload.php', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+        setShowMap(true);
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar dados:', error);
+      });
+  };
+
+  
+
+  return (
+    <div className="overlay">
+      <div className="content">
+
+        <div className="main-container">
+            <div className="webcam-container">
+              <Webcam
+                audio={false}
+                screenshotFormat="image/jpeg"
+                style={{ display: 'block' }}
+                ref={webcamRef}
+                videoConstraints={{ facingMode: frontCamera ? 'user' : 'environment' }}
+                className="webcam"
+              />
+              <button className="button" onClick={toggleCamera}>
+                Toggle Camera
+              </button>
+              <button className="button" onClick={handleCapture}>
+                Capture Photo
+              </button>
+              <button className="button" onClick={handleChooseImage}>
+                Choose Image
+              </button>
+            </div>
+
+            {capturedImage && (
+              <div className="captured-image-container">
+                <h2>Image Captured</h2>
+                <img
+                  src={capturedImage}
+                  alt="Captured"
+                  className="captured-image"
+                />
+              </div>
+            )}
+
+            {geolocation && (
+              <div className="geolocation-container">
+                <h2>Geolocation</h2>
+                <p className="geolocation-text">
+                  Latitude: {geolocation.latitude}
+                </p>
+                <p className="geolocation-text">
+                  Longitude: {geolocation.longitude}
+                </p>
+              </div>
+            )}
+
+            {dateTime && (
+              <div className="date-time-container">
+                <h2>Date and Time</h2>
+                <p className="date-time-text">{dateTime}</p>
+              </div>
+            )}
+
+            {showMap && (
+              <div className="google-maps-container">
+                <GoogleMaps
+                  latitude={geolocation.latitude}
+                  longitude={geolocation.longitude}
+                />
+              </div>
+            )}
+
+            {showMap && (
+              <div className="comments-container">
+                <h2>Comments</h2>
+                <textarea
+                  value={comments}
+                  onChange={handleCommentChange}
+                  className="comments-input"
+                />
+                <button className="submit-button" onClick={handleSubmit}>
+                  Submit Rescue
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+
+        <button onClick={onClose}>Fechar</button>
+
+      </div>
+  );
+}
+
+export default OverlayComponent;
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4

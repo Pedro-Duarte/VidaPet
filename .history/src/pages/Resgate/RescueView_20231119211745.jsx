@@ -5,7 +5,7 @@ const RescueView = () => {
   const [rescueData, setRescueData] = useState([]);
 
   useEffect(() => {
-    fetch('https://vidapet.tech/rescue_list.php')
+    fetch('https://18.228.95.233/rescue_list.php')
       .then(response => response.json())
       .then(data => {
         setRescueData(data);

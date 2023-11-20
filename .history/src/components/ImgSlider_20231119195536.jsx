@@ -23,8 +23,8 @@ const ImgSlider = (props) => {
     <Carousel {...settings}>
       <Wrap>
         <a>
-        <h6>Capture Fotos de Animais</h6>
-        <h10>Ajude animais perdidos ou abandonados apenas capturando uma foto e salvando em nossa base de dados </h10>
+        Capture Fotos de Animais
+Ajude animais perdidos ou abandonados apenas capturando uma foto e salvando em nossa base de dados 
           <img src={foto} alt="" />
 
         </a>

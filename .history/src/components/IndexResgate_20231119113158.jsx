@@ -9,26 +9,15 @@ export function IndexResgate() {
             <section>
                 <div>
                     <h1>
-                    Seu Ecossistema para gerenciar Pets
+                        Pets Perdidos: Traga-os de Volta para Casa
                     </h1>
                     <p>
-                    Nossa missão é criar um Ecossistema onde você pode fazer toda a gestão do seu Pet e ajudar outros abandonados ou perdidos.
+                        Perder um animal de estimação é angustiante, mas não precisa ser permanente. Nossa plataforma conecta a comunidade de amantes de pets, permitindo que você divulgue e localize animais perdidos na sua região. Juntos, podemos ajudar nossos amigos peludos a voltar para casa em segurança.
                     </p>
                     <a href="/resgate">Saiba Mais</a>
                 </div>
             </section>
 
-            <section>
-                <div>
-                    <h1>
-                    Porque se Cadastrar?
-                    </h1>
-                    <p>
-                    Tenha o Historico de saúde do seu Pet na palma da mão, sem ter que guardar papeis, cartoes de vacinação em cada atendimento que seu Pet faz.
-                    </p>
-                    <a href="/resgate">Saiba Mais</a>
-                </div>
-            </section>
         </Container>
 
     )

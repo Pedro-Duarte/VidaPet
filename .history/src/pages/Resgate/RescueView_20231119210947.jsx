@@ -5,7 +5,7 @@ const RescueView = () => {
   const [rescueData, setRescueData] = useState([]);
 
   useEffect(() => {
-    fetch('https://vidapet.tech/rescue_list.php')
+    fetch('https://18.228.95.233/rescue_list.php')
       .then(response => response.json())
       .then(data => {
         setRescueData(data);
@@ -28,10 +28,10 @@ const RescueView = () => {
       {rescueData.map((rescue, index) => (
         <RescueItem key={index}>
           <RescueImage src={`https://vidapet.tech/${rescue.image_path}`} alt="Foto do animal" />
-          <RescueContent>
+          <RescueInfo>
             <GeoLink onClick={() => openMap(rescue.latitude, rescue.longitude)}>Geolocalização</GeoLink>
-            <Comments>{rescue.comments}</Comments>
-          </RescueContent>
+            <p>Comentários: {rescue.comments}</p>
+          </RescueInfo>
         </RescueItem>
       ))}
     </RescueList>
@@ -51,12 +51,12 @@ const RescueItem = styled.div`
 `;
 
 const RescueImage = styled.img`
-  width: 100px;
+  width: 100px; // Ajuste conforme necessário
   height: 100px;
   margin-right: 1rem;
   object-fit: cover;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: pointer; // Indica que é clicável
 `;
 
 const GeoLink = styled.button`
@@ -71,13 +71,9 @@ const GeoLink = styled.button`
   font-size: inherit;
 `;
 
-const RescueContent = styled.div`
+const RescueInfo = styled.div`
   display: flex;
-  align-items: center; // Isso centraliza verticalmente o conteúdo dentro de RescueContent
-`;
-
-const Comments = styled.p`
-  margin-left: 1rem; // Isso adiciona espaço entre o link da geolocalização e o comentário
+  flex-direction: column;
 `;
 
 export default RescueView;

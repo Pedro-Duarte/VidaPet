@@ -12,7 +12,7 @@ export function IndexResgate() {
                     Seu Ecossistema para gerenciar Pets
                     </h1>
                     <p>
-                    Nossa missão é criar um Ecossistema onde você pode fazer toda a gestão do seu Pet e ajudar outros abandonados ou perdidos.
+                    Cuidando dos Pets: Nossa missao é criar um Ecossistem onde voce pode fazer toda a gestao do seu Pet e ajudar outros abandonados ou perdidos.
                     </p>
                     <a href="/resgate">Saiba Mais</a>
                 </div>

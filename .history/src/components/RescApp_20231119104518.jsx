@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+<<<<<<< HEAD
 import '../../styles/App.css';
 import GoogleMaps from '../../components/GoogleMaps';
 import Webcam from 'react-webcam';
+=======
+import GoogleMaps from './GoogleMaps';
+import Webcam from 'react-webcam';
+import '../App.css';
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
 
 function RescApp() {
   const [capturedImage, setCapturedImage] = useState(null);
@@ -15,20 +21,12 @@ function RescApp() {
 
   useEffect(() => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setGeolocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error('Erro ao obter geolocalização:', error);
-          alert('Erro ao obter geolocalização. Por favor, habilite a localização e tente novamente.');
-        }
-      );
-    } else {
-      alert('Geolocalização não é suportada pelo seu navegador.');
+      navigator.geolocation.getCurrentPosition((position) => {
+        setGeolocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
     }
 
     const currentDateTime = new Date().toLocaleString();
@@ -51,44 +49,54 @@ function RescApp() {
     setComments(e.target.value);
   };
 
-  const sendFormData = async (formData) => {
-    try {
-      const response = await fetch('https://18.228.95.233/upload.php', {
-        method: 'POST',
-        body: formData,
-        mode: 'cors',
+<<<<<<< HEAD
+  const sendFormData = (formData) => {
+    fetch('http://18.230.58.0:8080/upload.php', {
+      method: 'POST',
+      body: formData,
+      mode: 'cors',
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+        setShowMap(true);
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar dados:', error);
       });
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      console.log('Dados enviados com sucesso:', data);
-      alert('Dados enviados com sucesso!');
-    } catch (error) {
-      console.error('Erro ao enviar dados:', error);
-      alert('Dados enviados com sucesso:');
-    }
   };
 
   const handleSubmit = async () => {
     if (capturedImage && geolocation && dateTime) {
       const formData = new FormData();
 
+      // Convertendo Data URI para Blob
       const response = await fetch(capturedImage);
       const blob = await response.blob();
 
+      // Criando um arquivo a partir do Blob
       const file = new File([blob], 'captured_image.jpg', { type: 'image/jpeg' });
 
+      // Adicionando os dados ao objeto FormData
       formData.append('capturedImage', file);
+=======
+  const handleSubmit = () => {
+    // Envie os dados para o backend aqui, similar ao que foi feito em handleCapture
+    if (capturedImage) {
+      const formData = new FormData();
+      formData.append('capturedImage', capturedImage);
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
       formData.append('latitude', geolocation.latitude);
       formData.append('longitude', geolocation.longitude);
       formData.append('capture_datetime', dateTime);
       formData.append('comments', comments);
 
       sendFormData(formData);
+<<<<<<< HEAD
     } else {
       console.error('Dados faltando para enviar.');
-      alert('Dados faltando para enviar. Por favor, capture a imagem, verifique a geolocalização e a data/hora, e tente novamente.');
+=======
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
     }
   };
 
@@ -113,8 +121,30 @@ function RescApp() {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const sendFormData = (formData) => {
+    fetch('/upload.php', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+        setShowMap(true);
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar dados:', error);
+      });
+  };
+
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
   const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
+    if (darkMode) {
+      document.body.classList.remove('dark-mode');
+    } else {
+      document.body.classList.add('dark-mode');
+    }
     setDarkMode(!darkMode);
   };
 
@@ -138,22 +168,22 @@ function RescApp() {
             className="webcam"
           />
           <button className="button" onClick={toggleCamera}>
-            Trocar Câmera
+            Toggle Camera
           </button>
           <button className="button" onClick={handleCapture}>
-            Capturar Foto
+            Capture Photo
           </button>
           <button className="button" onClick={handleChooseImage}>
-            Escolher Imagem
+            Choose Image
           </button>
         </div>
 
         {capturedImage && (
           <div className="captured-image-container">
-            <h2>Imagem Capturada</h2>
+            <h2>Image Captured</h2>
             <img
               src={capturedImage}
-              alt="Capturada"
+              alt="Captured"
               className="captured-image"
             />
           </div>
@@ -161,7 +191,7 @@ function RescApp() {
 
         {geolocation && (
           <div className="geolocation-container">
-            <h2>Geolocalização</h2>
+            <h2>Geolocation</h2>
             <p className="geolocation-text">
               Latitude: {geolocation.latitude}
             </p>
@@ -173,7 +203,7 @@ function RescApp() {
 
         {dateTime && (
           <div className="date-time-container">
-            <h2>Data e Hora</h2>
+            <h2>Date and Time</h2>
             <p className="date-time-text">{dateTime}</p>
           </div>
         )}
@@ -189,14 +219,14 @@ function RescApp() {
 
         {showMap && (
           <div className="comments-container">
-            <h2>Comentários</h2>
+            <h2>Comments</h2>
             <textarea
               value={comments}
               onChange={handleCommentChange}
               className="comments-input"
             />
             <button className="submit-button" onClick={handleSubmit}>
-              Enviar Resgate
+              Submit Rescue
             </button>
           </div>
         )}

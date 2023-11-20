@@ -53,7 +53,7 @@ function RescApp() {
 
   const sendFormData = async (formData) => {
     try {
-      const response = await fetch('https://18.228.95.233/upload.php', {
+      const response = await fetch('https://18.230.58.0/upload.php', {
         method: 'POST',
         body: formData,
         mode: 'cors',
