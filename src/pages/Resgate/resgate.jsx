@@ -1,27 +1,16 @@
 import "../../styles/style.css";
 import { styled } from 'styled-components';
-<<<<<<< HEAD
-import WebcamCapture from './Components/ca';
-=======
 import OverlayComponent from './OverlayComponent';
->>>>>>> f31ed68562fbb0bab4822a2fd9371095c312a1ca
 import React, { useState } from 'react';
 import RescueView from './RescueView';
 
 
 function App() {
-<<<<<<< HEAD
-  const [isWebcamVisible, setIsWebcamVisible] = useState(false);
-
-  const openWebcam = () => {
-    setIsWebcamVisible(true);
-=======
   
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
   const openOverlay = () => {
     setIsOverlayVisible(true);
->>>>>>> f31ed68562fbb0bab4822a2fd9371095c312a1ca
   };
 
   const closeOverlay = () => {
@@ -42,29 +31,19 @@ function App() {
             <p>Isso não apenas ajuda a localizar rapidamente o animal, mas também cria oportunidades para resgatadores e pessoas interessadas em adotar fazerem a diferença na vida desses animais de estimação.</p>
             <h2> Junte-se a nós nesta missão de cuidar e encontrar um lar para os peludos necessitados! 🐶🏡🐱</h2>
             <div>
-<<<<<<< HEAD
-              <button onClick={openWebcam}>Abrir Componente Sobreposto</button>
-              
-            </div>
-=======
             <button onClick={openOverlay}>Abrir Componente Sobreposto</button>
 
       {isOverlayVisible && (
         <OverlayComponent onClose={closeOverlay} />
       )}
       </div>
->>>>>>> f31ed68562fbb0bab4822a2fd9371095c312a1ca
           </div>
         </section>
 
       </Container>
-<<<<<<< HEAD
-      {isWebcamVisible && <WebcamCapture closeWebcam={closeWebcam} />}
-      
-=======
+
       <RescueView />
->>>>>>> f31ed68562fbb0bab4822a2fd9371095c312a1ca
-    </>
+</>
   )
 }
 
