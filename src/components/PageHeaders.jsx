@@ -168,7 +168,7 @@ justify-content: space-between;
     display: none;
   }
 
-  @media(max-width: 900px) {
+  @media(max-width: 768px) {
     .mobile {
       display: initial;
     }

@@ -1,11 +1,10 @@
 import "../../styles/style.css";
 import { styled } from 'styled-components';
-import WebcamCapture from './OverlayComponent';
+import WebcamCapture from './Components/ca';
 import React, { useState } from 'react';
 
 
 function App() {
-
   const [isWebcamVisible, setIsWebcamVisible] = useState(false);
 
   const openWebcam = () => {
@@ -18,7 +17,7 @@ function App() {
 
   return (
     <>
-      <Container>
+      <Container >
         <section>
           <div>
             <h1>
@@ -31,27 +30,16 @@ function App() {
             <h2> Junte-se a nós nesta missão de cuidar e encontrar um lar para os peludos necessitados! 🐶🏡🐱</h2>
             <div>
               <button onClick={openWebcam}>Abrir Componente Sobreposto</button>
-
+              
             </div>
           </div>
         </section>
 
       </Container>
-      {isWebcamVisible && (
-        <div className="webcam-overlay">
-          <WebcamCapture onClose={closeWebcam}
-            videoConstraints={{
-              width: window.innerWidth,
-              height: window.innerHeight,
-            }}
-          />
-        </div>
-      )}
-
-
+      {isWebcamVisible && <WebcamCapture closeWebcam={closeWebcam} />}
+      
     </>
   )
-
 }
 
 const Container = styled.section`

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import PaginaInicial from "../App";
 import Resgate from '../resgate-1';
 import SobreNos from '../pages/SobreNos/IndexSobreNos';

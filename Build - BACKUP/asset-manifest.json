@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9c4cbb9f.css",
-    "main.js": "/static/js/main.1f721738.js",
+    "main.js": "/static/js/main.a79c97e8.js",
     "static/js/787.bcd98ece.chunk.js": "/static/js/787.bcd98ece.chunk.js",
     "static/media/banner.jpg": "/static/media/banner.478a0d0fed7602b32ee8.jpg",
     "static/media/logo-vidaPet.png": "/static/media/logo-vidaPet.b2b3fee510bbece0c32d.png",
@@ -13,11 +13,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.9c4cbb9f.css.map": "/static/css/main.9c4cbb9f.css.map",
-    "main.1f721738.js.map": "/static/js/main.1f721738.js.map",
+    "main.a79c97e8.js.map": "/static/js/main.a79c97e8.js.map",
     "787.bcd98ece.chunk.js.map": "/static/js/787.bcd98ece.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9c4cbb9f.css",
-    "static/js/main.1f721738.js"
+    "static/js/main.a79c97e8.js"
   ]
 }
