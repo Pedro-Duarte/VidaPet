@@ -51,7 +51,11 @@ const NavMenu = styled.div`
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
+<<<<<<< HEAD
+  justify-content: flex-end;
+=======
   justify-content: center;
+>>>>>>> 793f5a2800438c0c45e16dce15a374848ec8d8e4
   margin: 0px;
   padding: 0px;
   position: relative;
