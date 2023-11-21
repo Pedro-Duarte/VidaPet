@@ -7,7 +7,8 @@ const Contato = () => {
   return(
     <StyledDiv>
       <h1>Contato</h1>
-      <p>Entre em contato conosco deixando sua dúvida, sugestão, crítica ou elogio. Nosso intuito é melhorar cada vez mais. Obrigado!</p>
+      <p>Entre em contato conosco deixando sua dúvida, sugestão, crítica 
+        ou elogio.</p>
       <Formulario />        
     </StyledDiv>
   );

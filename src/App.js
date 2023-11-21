@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <PageHeader onClick={handleClick} setMenuIsVisible={setMenuIsVisible} />
+        <PageHeader setMenuIsVisible={setMenuIsVisible} />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -33,9 +33,6 @@ function App() {
         menuIsVisible={menuIsVisible}
         setMenuIsVisible={setMenuIsVisible}
       />
-
-
-
     </div>
   );
 }
