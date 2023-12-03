@@ -34,7 +34,7 @@ const Formulario = () => {
     setMessage(e.target.value);
   };
 
-  // Funções de alteração para atualizar os estados conforme os usuários clicam nos campos
+  // Funções de alteração para atualizar os estados conforme os usuários clicam nos campos e desclicam
   const handleNameClick = () => {
     setNameClick(true);
   };
@@ -64,31 +64,40 @@ const Formulario = () => {
     setMessageClick(false);
   };
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+    alert('TESTE')
+  }
+
   // Renderização do componente
   return (
-    <StyledFormulario>
+    <StyledFormulario onSubmit={sendEmail}>
 
-      <div className={`form-group ${name ? 'focused' : nameClick === true ? 'focused' : ''}`}>
+      <div className={`form-group ${name && nameClick === false ? 'changed' : nameClick === true ? 'focused' : ''}`}>
         <label htmlFor="name" onSelect={handleNameChange}>Nome</label>
-        <input type="text" id="name" value={name} onChange={handleNameChange} onClick={handleNameClick} onSelect={handleNameClick} onBlur={handleNameClickBlur} required />
+        <input type="text" id="name" value={name} onChange={handleNameChange} onClick={handleNameClick} 
+        onSelect={handleNameClick} onBlur={handleNameClickBlur} required />
       </div>
 
 
-      <div className={`form-group ${email ? 'focused' : emailClick === true ? 'focused' : ''}`}>
+      <div className={`form-group ${email && emailClick === false ? 'changed' : emailClick === true ? 'focused' : ''}`}>
         <label htmlFor="email">E-mail</label>
-        <input type="email" id="email" value={email} onChange={handleEmailChange} onClick={handleEmailClick} onSelect={handleEmailClick} onBlur={handleEmailClickBlur} required />
+        <input type="email" id="email" value={email} onChange={handleEmailChange} onClick={handleEmailClick} 
+        onSelect={handleEmailClick} onBlur={handleEmailClickBlur} required />
       </div>
 
 
-      <div className={`form-group ${subject ? 'focused' : subjectClick === true ? 'focused' : ''}`}>
+      <div className={`form-group ${subject && subjectClick === false ? 'changed' : subjectClick === true ? 'focused' : ''}`}>
         <label htmlFor="subject">Assunto</label>
-        <input type="text" id="subject" value={subject} onChange={handleSubjectChange} onClick={handleSubjectClick} onSelect={handleSubjectClick} onBlur={handleSubjectClickBlur} required />
+        <input type="text" id="subject" value={subject} onChange={handleSubjectChange} onClick={handleSubjectClick} 
+        onSelect={handleSubjectClick} onBlur={handleSubjectClickBlur} required />
       </div>
 
 
-      <div className={`form-group ${message ? 'focused' : messageClick === true ? 'focused' : ''}`}>
+      <div className={`form-group ${message && messageClick === false ? 'changed' : messageClick === true ? 'focused' : ''}`}>
         <label htmlFor="message">Mensagem</label>
-        <textarea id="message" rows="4" value={message} onChange={handleMessageChange} onClick={handleMessageClick} onSelect={handleMessageClick} onBlur={handleMessageClickBlur} required></textarea>
+        <textarea id="message" rows="4" value={message} onChange={handleMessageChange} onClick={handleMessageClick} 
+        onSelect={handleMessageClick} onBlur={handleMessageClickBlur} required></textarea>
       </div>
 
 
@@ -138,11 +147,11 @@ const StyledFormulario = styled.form`
       outline-color: #9e8f05;
 
       &:focus {
-        transform: translateY(-.4rem);
+        transform: translateY(-.3rem);
       }
 
       &:hover {
-        transform: translateY(-.4rem);
+        transform: translateY(-.3rem);
         border-color: #9e8f05;
       }
     }
@@ -156,13 +165,24 @@ const StyledFormulario = styled.form`
     }
 
     .form-group.focused input,
-    .form-group.focused textarea {
+    .form-group.focused textarea,
+    .form-group.changed input,
+    .form-group.changed textarea {
       border: 1px solid #9e8f05;
+      outline-color: #9e8f05;
+    }
+
+    .form-group.changed label {
+      transform: translateY(-.9rem);
+      font-size: 0.75rem;
+      color: #9e8f05;
+      border-color: #9e8f05;
       outline-color: #9e8f05;
     }
 
     .botao {
       color: white;
+      font-size: 1rem;
       font-weight: 900;
       border-radius: 5px;
       border: none;
