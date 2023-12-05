@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import validator from 'validator';
 import '../../src/styles/style.css';
 
 // Componente principal do formulário
@@ -9,6 +10,7 @@ const Formulario = () => {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [erros, setErros] = useState({});
 
   // Estados para armazenar a condição dos campos, se clicado ou não
   const [nameClick, setNameClick] = useState(false);
@@ -64,44 +66,99 @@ const Formulario = () => {
     setMessageClick(false);
   };
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    alert('TESTE')
-  }
+  const validarFormulario = () => {
+    const novosErros = {};
+
+    if (validator.isEmpty(name)) {
+      novosErros.name = 'Campo Nome é obrigatório.';
+    }
+
+    if (!validator.isEmail(email)) {
+      novosErros.email = 'E-mail inválido.';
+    }
+
+    if (validator.isEmpty(subject)) {
+      novosErros.subject = 'Campo Assunto é obrigatório.';
+    }
+
+    if (validator.isEmpty(message)) {
+      novosErros.message = 'Campo Mensagem é obrigatório.';
+    }
+
+    setErros(novosErros);
+
+    return Object.keys(novosErros).length === 0;
+  };
+
+  const enviarFormulario = async () => {
+    if (validarFormulario()) {
+      try {
+        const response = await fetch('http://localhost:3001/enviar-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, email, subject, message }),
+        });
+
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Erro ao enviar formulário:', error);
+      }
+    }
+
+    console.log('email enviado')
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevenir o comportamento padrão do formulário
+    enviarFormulario(); // Chamar a função de envio do formulário
+
+    setName('');
+    setEmail('');
+    setSubject('');
+    setMessage('');
+  };
 
   // Renderização do componente
   return (
-    <StyledFormulario onSubmit={sendEmail}>
+    <StyledFormulario onSubmit={handleSubmit}>
 
       <div className={`form-group ${name && nameClick === false ? 'changed' : nameClick === true ? 'focused' : ''}`}>
         <label htmlFor="name" onSelect={handleNameChange}>Nome</label>
         <input type="text" id="name" value={name} onChange={handleNameChange} onClick={handleNameClick} 
-        onSelect={handleNameClick} onBlur={handleNameClickBlur} required />
+        onSelect={handleNameClick} onBlur={handleNameClickBlur}/>
+        {erros.name && <p className='alert'>{erros.name}</p>}
       </div>
+      
 
 
       <div className={`form-group ${email && emailClick === false ? 'changed' : emailClick === true ? 'focused' : ''}`}>
         <label htmlFor="email">E-mail</label>
         <input type="email" id="email" value={email} onChange={handleEmailChange} onClick={handleEmailClick} 
-        onSelect={handleEmailClick} onBlur={handleEmailClickBlur} required />
+        onSelect={handleEmailClick} onBlur={handleEmailClickBlur}/>
+        {erros.email && <p className='alert'>{erros.email}</p>}
       </div>
 
 
       <div className={`form-group ${subject && subjectClick === false ? 'changed' : subjectClick === true ? 'focused' : ''}`}>
         <label htmlFor="subject">Assunto</label>
         <input type="text" id="subject" value={subject} onChange={handleSubjectChange} onClick={handleSubjectClick} 
-        onSelect={handleSubjectClick} onBlur={handleSubjectClickBlur} required />
+        onSelect={handleSubjectClick} onBlur={handleSubjectClickBlur}/>
+        {erros.subject && <p className='alert'>{erros.subject}</p>}
       </div>
 
 
       <div className={`form-group ${message && messageClick === false ? 'changed' : messageClick === true ? 'focused' : ''}`}>
         <label htmlFor="message">Mensagem</label>
         <textarea id="message" rows="4" value={message} onChange={handleMessageChange} onClick={handleMessageClick} 
-        onSelect={handleMessageClick} onBlur={handleMessageClickBlur} required></textarea>
+        onSelect={handleMessageClick} onBlur={handleMessageClickBlur}></textarea>
+        {erros.message && <p className='alert'>{erros.message}</p>}
       </div>
 
 
-      <button className='botao' type="submit">Enviar</button>
+      <button className='botao' onClick={enviarFormulario}>Enviar</button>
     </StyledFormulario>
   );
 };
@@ -115,6 +172,10 @@ const StyledFormulario = styled.form`
   padding: 1rem;
   border-radius: 3px;
   border: 2px solid rgba(215, 211, 80, 0.3);
+
+  .alert {
+      color: red;
+    }
 
   @media only screen and (max-width: 768px) {
     width: 70%;
@@ -136,6 +197,8 @@ const StyledFormulario = styled.form`
       cursor: pointer;
     }
 
+    
+
     input,
     textarea {
       width: 100%;
@@ -155,6 +218,7 @@ const StyledFormulario = styled.form`
         border-color: #9e8f05;
       }
     }
+
     
     .form-group.focused label {
       transform: translateY(-1.3rem);
