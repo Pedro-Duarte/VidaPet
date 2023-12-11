@@ -3,8 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser'
-
-require('dotenv').config();
+import dotenv from 'dotenv';
 
 const app = express();
 const PORT = 3001;
@@ -34,24 +33,24 @@ const validarDados = (name, email, subject, message) => {
   return erros;
 };
 
-app.post('/enviar-email', (req, res) => {
-  const { nome, email, subject, message } = req.body;
-  const erros = validarDados(nome, email, subject, message);
+app.post('/enviar', (req, res) => {
+  const { name, email, subject, message } = req.body;
+  const erros = validarDados(name, email, subject, message);
 
   if (Object.keys(erros).length === 0) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
+        user: `${process.env.GMAIL_USER}`,
+        pass: `${process.env.GMAIL_PASS}`,
       },
     });
 
     const mailOptions = {
       from: `${email}`,
-      to: process.env.GMAIL_USER,
+      to: `${process.env.GMAIL_USER}`,
       subject: `${subject}`,
-      text: `Nome: ${nome}\nE-mail: ${email}\nAssunto: ${subject}\nMensagem: ${message}`,
+      text: `Nome: ${name}\nE-mail: ${email}\nAssunto: ${subject}\nMensagem: ${message}`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

@@ -1,6 +1,10 @@
+// Importando React e hooks do React
 import React, { useState } from 'react';
+// Importando o styled-components para estilização
 import styled from 'styled-components';
+// Importando a biblioteca validator para validação de dados
 import validator from 'validator';
+// Importando o arquivo de estilo global
 import '../../src/styles/style.css';
 
 // Componente principal do formulário
@@ -17,7 +21,6 @@ const Formulario = () => {
   const [emailClick, setEmailClick] = useState(false);
   const [subjectClick, setSubjectClick] = useState(false);
   const [messageClick, setMessageClick] = useState(false);
-
 
   // Funções de alteração para atualizar os estados conforme os usuários interagem com os campos
   const handleNameChange = (e) => {
@@ -44,7 +47,6 @@ const Formulario = () => {
     setNameClick(false);
   };
 
-
   const handleEmailClick = () => {
     setEmailClick(true);
   };
@@ -66,6 +68,7 @@ const Formulario = () => {
     setMessageClick(false);
   };
 
+  // Função para validar o formulário
   const validarFormulario = () => {
     const novosErros = {};
 
@@ -90,6 +93,7 @@ const Formulario = () => {
     return Object.keys(novosErros).length === 0;
   };
 
+  // Função para enviar o formulário
   const enviarFormulario = async () => {
     if (validarFormulario()) {
       try {
@@ -108,13 +112,15 @@ const Formulario = () => {
       }
     }
 
-    console.log('email enviado')
+    console.log('email enviado');
   };
 
+  // Função chamada ao enviar o formulário
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevenir o comportamento padrão do formulário
     enviarFormulario(); // Chamar a função de envio do formulário
 
+    // Limpar os campos após o envio
     setName('');
     setEmail('');
     setSubject('');
