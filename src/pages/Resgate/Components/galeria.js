@@ -1,6 +1,6 @@
 import React from 'react'
 
-function galeria(callback) {
+function Galeria(callback) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*'; // Aceitar apenas imagens
@@ -20,5 +20,5 @@ function galeria(callback) {
 
 }
 
-export default galeria
+export default Galeria
 

@@ -2,17 +2,12 @@ import "../../styles/style.css";
 import { styled } from 'styled-components';
 import WebcamCapture from './Components/camera';
 import React, { useState } from 'react';
-import RescueView from '../Resgate/RescueView';
 
 
 function App() {
   const [isWebcamVisible, setIsWebcamVisible] = useState(false);
-  const [overlayVisible, setOverlayVisible] = useState(true);
-  const [capturedImages, setCapturedImages] = useState([]);
 
-  const onCloseOverlay = () => {
-    setOverlayVisible(false);
-  };
+  const [capturedImages, setCapturedImages] = useState([]);
 
   const handleCaptureImage = (imageSrc) => {
     setCapturedImages([...capturedImages, imageSrc]);
@@ -40,7 +35,7 @@ function App() {
             <p>Isso não apenas ajuda a localizar rapidamente o animal, mas também cria oportunidades para resgatadores e pessoas interessadas em adotar fazerem a diferença na vida desses animais de estimação.</p>
             <h2> Junte-se a nós nesta missão de cuidar e encontrar um lar para os peludos necessitados! 🐶🏡🐱</h2>
             <div>
-              <button onClick={openWebcam}>INICIAR</button>
+              <button onClick={openWebcam}>Abrir Componente Sobreposto</button>
 
             </div>
           </div>
@@ -50,9 +45,7 @@ function App() {
       {isWebcamVisible && <WebcamCapture
         closeWebcam={closeWebcam}
         onCaptureImage={handleCaptureImage}
-       
       />}
-      <RescueView />
 
     </>
   )

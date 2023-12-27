@@ -42,6 +42,8 @@ const RescueList = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
+
+  
 `;
 
 const RescueItem = styled.div`
