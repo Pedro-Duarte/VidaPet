@@ -11,8 +11,7 @@ function SobreNos() {
                 <div className='Sobre_Div'>
                     <h1>Sobre Nós</h1>
                     <p className='Sobre_Texto'>
-                        O Vida Pet by Lili é uma startup da área da Tecnologia onde vem com o 
-                        objetivo de trazer um Ecossistema para sanar dores, dificuldades que os donos de Pet tem.
+                    Somos uma startup de tecnologia dedicada a criar um ecossistema que visa resolver as preocupações e desafios enfrentados pelos donos de animais de estimação. O Vida Pet by Lili está aqui para oferecer soluções inovadoras e facilitar a vida dos amantes de pets.
                     </p>
                 </div>
                 <img className='Sobre_Imagem' src={PetImagem} alt='Imagem de um cão'></img>
@@ -20,10 +19,9 @@ function SobreNos() {
             <section className='Cuidando_Section'>
               <img className='Cuidando_Imagem' src={PetImagem2} alt='Imagem de um Cão'></img>
               <div className='Cuidando_Div'>
-                  <h1 className='Cuidando_H1'>Cuidando dos Pets</h1>
+                  <h1 className='Cuidando_H1'>Cuidando dos Pets com Dedicação</h1>
                   <p className='Cuidando_Texto'>
-                      Nossa missao é criar um Ecossistem onde voce pode fazer toda a gestao do seu Pet e 
-                      ajudar outros abandonados ou perdidos.
+                  Estamos comprometidos com a missão de criar um ecossistema dedicado a oferecer suporte integral para a gestão do seu pet. Não apenas isso, mas também buscamos ajudar aqueles animais abandonados ou perdidos que precisam de uma mão amiga.
                   </p>
               </div>
             </section>

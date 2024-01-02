@@ -8,13 +8,9 @@ import RescueView from '../Resgate/RescueView';
 
 function App() {
   const [isWebcamVisible, setIsWebcamVisible] = useState(false);
-  const [overlayVisible, setOverlayVisible] = useState(true);
   const [capturedImages, setCapturedImages] = useState([]);
 
-  const onCloseOverlay = () => {
-    setOverlayVisible(false);
-  };
-
+ 
   const handleCaptureImage = (imageSrc) => {
     setCapturedImages([...capturedImages, imageSrc]);
   };
@@ -41,7 +37,7 @@ function App() {
             <p>Isso não apenas ajuda a localizar rapidamente o animal, mas também cria oportunidades para resgatadores e pessoas interessadas em adotar fazerem a diferença na vida desses animais de estimação.</p>
             <h2> Junte-se a nós nesta missão de cuidar e encontrar um lar para os peludos necessitados! 🐶🏡🐱</h2>
             <div>
-              <button onClick={openWebcam}>INICIAR</button>
+              <button onClick={openWebcam} className="myButton">Iniciar Câmera</button>
 
             </div>
           </div>
@@ -70,6 +66,29 @@ background-color: rgb(30, 25, 44);
 position: relative;
 min-width: 100%;
 width: 100%;
+
+.myButton {
+  padding: 0.6rem 1.5rem;
+  background-color:#3fdb28;
+  border-radius:34px;
+  border:4px solid #b4edba;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Impact;
+  font-size:17px;
+  font-weight:bold;
+  padding:15px 32px;
+  text-decoration:none;
+  text-shadow:-1px 2px 7px #2f6627;
+}
+.myButton:hover {
+  background-color:#1e4f03;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
 
 
 >section{
@@ -131,22 +150,12 @@ display: flex;
               color: rgb(255, 255, 255);
             }
 
-      . button{
-            margin: 2rem 0rem;
-  border-radius: 8px;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 1px solid rgb(127, 40, 181);
-  background: rgb(127, 40, 181);
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.1) 0px 5px 6px;
+      button{
+            margin: 1rem 0rem; 
 
   @media only screen and (min-width: 768px) {
     
-    margin: 2rem 30rem;
+    margin: 1rem 28rem;
   } 
            }
 

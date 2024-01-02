@@ -22,38 +22,38 @@ const ImgSlider = (props) => {
   return (
     <Carousel {...settings}>
       <Wrap>
-        <a>
+        <div>
         <h6>Capture Fotos de Animais</h6>
         <h10>Ajude animais perdidos ou abandonados apenas capturando uma foto e salvando em nossa base de dados </h10>
           <img src={foto} alt="" />
 
-        </a>
+          </div>
       </Wrap>
 
       <Wrap>
-        <a>
+      <div>
         Resgate de Pets
 Atraves de nosso banco de dados donos de pets perdidos podem achar o seu pet com a ultima Localização vista.
           <img src={foto1} alt="" />
-        </a>
+          </div>
       </Wrap>
 
 
       <Wrap>
-        <a>
+      <div>
           Adoção
 Tambem por nosso banco de dados resgatadores e aqueles de que desejam adotar um Pet podem ter acesso aos Pets.
           <img src={foto2} alt="" />
-        </a>
+          </div>
       </Wrap>
 
 
       <Wrap>
-        <a>
+      <div>
           Gatos e Outros Pets
 Estamos trabalhando incessantemente para expandir nosso sistema para Gatos e outros Pets.
           <img src={foto3} alt="" />
-        </a>
+          </div>
       </Wrap>
 
      </Carousel>
@@ -103,7 +103,7 @@ const Wrap = styled.div`
   cursor: pointer;
   position: relative;
 
-  a {
+  div {
     color: black;
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,

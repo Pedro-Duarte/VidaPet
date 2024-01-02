@@ -9,26 +9,15 @@ export function IndexResgate() {
             <section>
                 <div>
                     <h1>
-                    Seu Ecossistema para gerenciar Pets
+                    Pets Perdidos: Traga-os de Volta para Casa
                     </h1>
                     <p>
-                    Nossa missão é criar um Ecossistema onde você pode fazer toda a gestão do seu Pet e ajudar outros abandonados ou perdidos.
+                    Perder um animal de estimação é uma experiência angustiante, mas a solução não precisa ser permanente. Nossa plataforma une a comunidade de amantes de pets, proporcionando a você a oportunidade de divulgar e localizar animais perdidos na sua região. Juntos, podemos colaborar para garantir que nossos amigos peludos retornem para casa em segurança.
                     </p>
-                    <a href="/resgate">Saiba Mais</a>
+                    <a href="/resgate" className='myButton'>Comece a Explorar Agora</a>
                 </div>
             </section>
-
-            <section>
-                <div>
-                    <h1>
-                    Porque se Cadastrar?
-                    </h1>
-                    <p>
-                    Tenha o Historico de saúde do seu Pet na palma da mão, sem ter que guardar papeis, cartoes de vacinação em cada atendimento que seu Pet faz.
-                    </p>
-                    <a href="/resgate">Saiba Mais</a>
-                </div>
-            </section>
+       
         </Container>
 
     )
@@ -46,6 +35,30 @@ position: relative;
 min-width: 100%;
 width: 100%;
 max-height: 100%;
+
+.myButton {
+    padding: 0.6rem 1.5rem;
+    background-color:#3fdb28;
+    border-radius:34px;
+    border:4px solid #b4edba;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:15px 32px;
+    text-decoration:none;
+    text-shadow:-1px 2px 7px #2f6627;
+  }
+  .myButton:hover {
+    background-color:#1e4f03;
+  }
+  .myButton:active {
+    position:relative;
+    top:1px;
+  }
+  
 
 @media only screen and (min-width: 768px) {
     

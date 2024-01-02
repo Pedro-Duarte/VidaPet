@@ -1,4 +1,3 @@
-import React from 'react'
 
 function Galeria(callback) {
     const input = document.createElement('input');

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Webcam from "react-webcam";
 import { styled } from 'styled-components';
 import { MdAddToPhotos, MdOutlineCamera, MdOutlineFlipCameraIos } from "react-icons/md";
@@ -13,35 +13,36 @@ function WebcamCapture({ closeWebcam, onCaptureImage, }) { // Adicionei onCaptur
   const [capturedImages, setCapturedImages] = useState([]);
   const [cameraFacingMode, setCameraFacingMode] = useState('user'); // 'user' para a câmera frontal, 'environment' para a traseira
    const [currentPage, setCurrentPage] = useState(0);
+   
+  const [frontCamera, setFrontCamera] = useState(false);
 
- 
+  const toggleCamera = () => {
+    setFrontCamera(!frontCamera);
+  };
 
-  const startWebcam = async () => {
+   
+   const startWebcam = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ 
-        video: { facingMode: cameraFacingMode },});
-
+        video: { facingMode: cameraFacingMode },
+      });
+  
       webcamRef.current.srcObject = stream;
     } catch (error) {
       console.error('Erro ao acessar a câmera:', error);
     }
-  };
+  }, [cameraFacingMode]);
 
-  const toggleCameraFacingMode = () => {
-    setCameraFacingMode((prevMode) =>
-      prevMode === 'user' ? 'environment' : 'user'
-    );
-  };
-
-  const captureImage = () => {
+   const captureImage = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setCapturedImages([...capturedImages, imageSrc]);
     onCaptureImage(imageSrc);
   };
 
   useEffect(() => {
-    startWebcam(); // Inicie a câmera quando o componente for montado
-  }, []);
+    startWebcam();
+    // Restante do código
+  }, [startWebcam]);
 
   const handleGalleryPick = (file) => {
     const reader = new FileReader();
@@ -70,11 +71,14 @@ function WebcamCapture({ closeWebcam, onCaptureImage, }) { // Adicionei onCaptur
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
+              autoPlay playsInline muted 
+              videoConstraints={{ facingMode: frontCamera ? 'user' : 'environment' }}
+              
             />
           </div>
           <MdAddToPhotos size={30} onClick={() => galeria(handleGalleryPick)} />
           <MdOutlineCamera size={50} onClick={captureImage} />
-          <MdOutlineFlipCameraIos size={30} onClick={toggleCameraFacingMode} />
+          <MdOutlineFlipCameraIos size={30} onClick={toggleCamera} />
           <div className="captured-images">
             {capturedImages.map((image, index) => (
               <img key={index} src={image} alt={`Capturada ${index + 1}`} />
@@ -108,7 +112,8 @@ const Container = styled.section`
     padding: 1rem;
    position: fixed;
     top: 0;
-    left: 15%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.8); /* Adicione um fundo semi-transparente para destacar a câmera */
     z-index: 151; /* Certifique-se de que a câmera esteja na parte superior de todos os elementos */
     justify-content: center;
@@ -179,7 +184,9 @@ margin-left: 28rem;
 
 
 @media(max-width: 900px) {
-    left: 10%;
+  left: 50%;
+    transform: translateX(-50%);
+
     .prev, .next {
         cursor: pointer;
         position: absolute;
@@ -238,7 +245,8 @@ margin-left: 28rem;
     }
 
     @media(max-width: 750px) {
-        left:0rem;
+      left: 50%;
+      transform: translateX(-50%);
     
         .captured-images {
             display: flex;
@@ -270,7 +278,8 @@ margin-left: 28rem;
         }
 
 @media(max-width: 500px) {
-    left:0rem;
+  left: 50%;
+  transform: translateX(-50%);
 
     .captured-images {
         display: flex;
@@ -306,7 +315,8 @@ margin-left: 28rem;
 
 @media(max-width: 400px) {
    
-    left:0;
+   left: 50%;
+    transform: translateX(-50%);
 
     .captured-images {
         display: flex;
