@@ -13,10 +13,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <UserInfo user={user} />
-      <PetList />
-      <Notifications />
-      {/* Adicione mais componentes conforme necessário */}
+      
     </div>
   );
 };

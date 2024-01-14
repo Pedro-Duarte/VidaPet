@@ -4,11 +4,16 @@ import { auth, provider } from "../../firebase";
 import { FaUser, FaLock, FaFacebook, FaEye, FaEyeSlash  } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { RiCloseCircleFill } from "react-icons/ri";
+import { setUserLoginDetails } from "../Login/Components/UserInfo";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = ({ closeLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();  
+  const navigate = useNavigate(); 
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -19,32 +24,52 @@ const Login = ({ closeLogin}) => {
     auth.signInWithPopup(provider)
       .then((result) => {
         // Lógica após o login com o Google
+        closeLogin();   
       })
+
       .catch((error) => {
         alert(error.message);
       });
   };
 
-  const handleEmailPasswordLogin = () => {
-    auth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        // Lógica após o login com e-mail/senha
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+  const handleLogin = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await auth.signInWithEmailAndPassword(email, password);
+      const user = response.user;
+  
+      // Verifica se displayName e photoURL estão disponíveis no usuário
+      const name = user.displayName || '';  // Caso não exista, define como uma string vazia
+      const photo = user.photoURL || '';
+  
+      // Disparar a ação para atualizar o estado do usuário no Redux
+      dispatch(setUserLoginDetails({ name, email: user.email, photo }));
+
+        closeLogin();     
+  
+      console.log('Usuário logado com sucesso:');
+    } catch (error) {
+      console.error('Erro ao fazer login:', error.message);
+    }
   };
+
+  
 
   return (
     <Cont>
       <div className='wrapper'>
       <RiCloseCircleFill size={35} className='close' onClick={closeLogin} />
-      
-        <form action="">
-          <h1>Entrar no Vida Pet</h1>
+      <h1>Entrar no Vida Pet</h1>
+
+        <form onSubmit={handleLogin}>          
           <div className='input-box'>
-            <input type='text' placeholder='Email' required />
+            <input 
+            type='text' 
+            placeholder='Email' 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required />
             <FaUser className='icon' />
           </div>
 
@@ -70,13 +95,12 @@ const Login = ({ closeLogin}) => {
             <a href="#">Esqueci minha senha</a>
           </div>
 
-          <button type='submit' onClick={handleEmailPasswordLogin} className='buttonEntrar'>Entrar</button>
-
+          <button type='submit' className='buttonEntrar'>Entrar</button>
+          </form>
           <div className="register-link">
             <p>Não tenho conta <a href='/registro'>Registar</a></p>
             
-          </div>
-        </form>
+          </div>        
         <div>
         <p className="register-link">___________  OU  ___________</p>
         <p>Inscreva-se com  </p>
@@ -360,15 +384,4 @@ margin-left: 17rem;
 
 }
 
-
-
-
-
-
-
-
-
-
 `
-
-

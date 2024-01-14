@@ -45,6 +45,10 @@ const PageHeaders = ({ setMenuIsVisible }) => {
     // Navegar para outra página
     navigate('/login');
   };
+  const dashboard = () => {
+    // Navegar para outra página
+    navigate('/dashboard');
+  };
 
   const handleAuth = () => {
     if (!userName) {
@@ -68,6 +72,7 @@ const PageHeaders = ({ setMenuIsVisible }) => {
   };
 
   const setUser = (user) => {
+    console.log("Setting user:", user);
     dispatch(
       setUserLoginDetails({
         name: user.displayName,
@@ -107,17 +112,22 @@ const PageHeaders = ({ setMenuIsVisible }) => {
       </NavMenu>
       
       {!userName ? (
-        <button onClick={openLogin} className='button'>Login</button>
+  <button onClick={openLogin} className='button'>Login</button>
+) : (
+  <>
+    <SignOut>
+      {userPhoto ? (
+        <UserImg src={userPhoto} alt={userName} />
       ) : (
-        <>
-         <SignOut>
-            <UserImg src={userPhoto} alt={userName} />
-            <DropDown>
-              <span onClick={handleAuth}>Sign out</span>
-            </DropDown>
-        </SignOut>
-      </>
-       )}
+        <img src="../../imagens/dog.png" alt="Ícone Padrão" />
+      )}
+      <DropDown>
+        <span onClick={dashboard}>Painel do usuário</span>
+        <span onClick={handleAuth}>Sair</span>
+      </DropDown>
+    </SignOut>
+  </>
+)}
        <section>
         <RiMenu3Fill size={35} onClick={() => setMenuIsVisible(true)} className="mobile" />
        </section>
@@ -313,11 +323,43 @@ const DropDown = styled.div`
   border: 1px solid rgba(151, 151, 151, 0.34);
   border-radius: 4px;
   box-shadow: rgb(0 0 0 / 50%) 0px 0px 18px 0px;
-  padding: 10px;
+  padding: 12px;
   font-size: 14px;
-  letter-spacing: 3px;
-  width: 100px;
+  letter-spacing: 1px;
+  width: 200px;
   opacity: 0;
+  display: grid;  
+  border-radius:10px;
+
+  span {
+    color: rgb(249, 249, 249);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.42px;
+    line-height: 1.08;
+    padding: 10px 8px;
+    white-space: nowrap; 
+    
+    &:hover {
+      color: #3CA63A; // ou a cor desejada ao passar o mouse
+      background-color: rgb(249, 249, 249);
+      border-radius:10px;
+
+      &:before {
+        background-color: #3CA63A; // ou a cor desejada ao passar o mouse
+      }      
+    }   
+    &:active {
+      color: #3CA6; // ou a cor desejada ao passar o mouse
+      background-color: rgb(249, 249, 249);
+      border-radius:10px;
+      font-size: 14px;
+      padding: 8px 5px;
+    
+  }
+
+  
+
 `;
 
 const SignOut = styled.div`
@@ -339,8 +381,11 @@ const SignOut = styled.div`
     ${DropDown} {
       opacity: 1;
       transition-duration: 1s;
-    }
+      z-index: 10;   
+             
   }
+  
+
 `;
 
 export default PageHeaders;

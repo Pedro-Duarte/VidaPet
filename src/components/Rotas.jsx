@@ -1,6 +1,5 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import PaginaInicial from "../App";
 import Resgate from '../pages/Resgate/resgat';
 import SobreNos from '../pages/SobreNos/IndexSobreNos';
 
@@ -8,12 +7,15 @@ function Rotas() {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact component={PaginaInicial} />
-        <Route path="/home" component={PaginaInicial} />
-        <Route path="/resgate" component={Resgate} />
-        <Route path="/sobrenos" component={SobreNos} />
-        <Route path="/resgate" component={Resgate} />
-        {/* Adicione mais rotas para outras páginas. */}
+      <Route exact path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/index.html" element={<Home />} />
+          <Route path="/resgate" element={<Resgate />} />
+          <Route path="/sobrenos" element={<SobreNos />} />
+          <Route path="/commit" element={<Commit />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
       </Routes>
     </Router>
   );

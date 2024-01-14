@@ -4,8 +4,10 @@ import { auth } from '../../firebase';
 import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { RiCloseCircleFill } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
+import { MdEmail } from "react-icons/md";
 
 const Registro = ({ closeLogin }) => {
+  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -51,7 +53,20 @@ const Registro = ({ closeLogin }) => {
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setSucesso('Usuário registrado com sucesso', user);
+
+        user.updateProfile({
+          displayName: userName,
+        });
+
+        user.updateProfile({
+          photoURL: 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png', // Substitua pela URL da imagem que você deseja
+        });
+        setSucesso('Usuário registrado com sucesso');
+
+        setTimeout(() => {
+          navigate('/home');
+        }, 1200);
+
       })
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
@@ -74,7 +89,19 @@ const Registro = ({ closeLogin }) => {
 
         <form action=''>
           <h1>Crie sua conta</h1>
-          <div className='input-box'>
+          <div className='input-box'>          
+          <input
+            type='text'
+            name='userName'
+            id='userName'
+            placeholder='Digite Nome de Usuario'
+            required
+            onChange={(e) => setUserName(e.target.value)}
+              />
+            <FaUser className='icon' />
+          </div>
+
+          <div className='input-box'>          
             <input
               type='text'
               name='email'
@@ -83,7 +110,7 @@ const Registro = ({ closeLogin }) => {
               required
               onChange={(e) => setEmail(e.target.value)}
             />
-            <FaUser className='icon' />
+            <MdEmail className='icon' />
           </div>
 
           <div className='input-box'>
